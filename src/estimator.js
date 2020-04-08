@@ -1,44 +1,14 @@
-const estimateCurrentlyInfectedInDays = (reportedCases, timeToElapse) => {
-  const currentlyInfected = reportedCases * 10;
-  const infectionsByRequestedTime = currentlyInfected * 1024;
-  return infectionsByRequestedTime * timeToElapse * 1;
-};
-const estimateProjectedInfectionsInWeeks = (reportedCases, timeToElapse) => {
-  const currentlyInfected = reportedCases * 50;
-  const infectionsByRequestedTime = currentlyInfected * 1024;
-  return infectionsByRequestedTime * timeToElapse * 7;
-};
-const estimateProjectedInfectionsInMonths = (reportedCases, timeToElapse) => {
-  const currentlyInfected = reportedCases * 50;
-  const infectionsByRequestedTime = currentlyInfected * 1024;
-  return infectionsByRequestedTime * timeToElapse * 30;
-};
+import impact from './impact';
+import severeImpact from './severeImpact';
+
+
 const covid19ImpactEstimator = (data) => {
-  const estimator = (
-    // challenge 1
-    estimateCurrentlyInfectedInDays,
-    estimateProjectedInfectionsInWeeks,
-    estimateProjectedInfectionsInMonths
-  );
-  return estimator({
-    data,
-    impact: {},
-    severeImpact: {}
-  });
+  const input = data;
+  return {
+    data: input,
+    impact: { impact },
+    severeImpact: { severeImpact }
+  };
 };
 
 export default covid19ImpactEstimator;
-
-
-//   const input = data;
-//   return {
-//     data: input,
-//     impact: {
-//       currentlyInfected: estimateCurrentlyInfected.currentlyInfected,
-//       infectionsByRequestedTime: estimateCurrentlyInfected.infectionsByRequestedTime
-//     },
-//     severeImpact: {
-//       currentlyInfected: estimateProjectedInfections.currentlyInfected,
-//       infectionsByRequestedTime: estimateProjectedInfections.infectionsByRequestedTime
-//     }
-//   }
