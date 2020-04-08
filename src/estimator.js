@@ -1,11 +1,13 @@
 const estimateCurrentlyInfected = (reportedCases) => {
   const currentlyInfected = reportedCases * 10;
-  return currentlyInfected;
+  const infectionsByRequestedTime = currentlyInfected * 1024;
+  return infectionsByRequestedTime;
 };
 
 const estimateProjectedInfections = (reportedCases) => {
   const currentlyInfected = reportedCases * 50;
-  return currentlyInfected;
+  const infectionsByRequestedTime = currentlyInfected * 1024;
+  return infectionsByRequestedTime;
 };
 
 
