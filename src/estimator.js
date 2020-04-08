@@ -1,9 +1,20 @@
+const estimateCurrentlyInfected = (reportedCases) => {
+  const currentlyInfected = reportedCases * 10;
+  return currentlyInfected;
+};
+
+const estimateProjectedInfections = (reportedCases) => {
+  const currentlyInfected = reportedCases * 50;
+  return currentlyInfected;
+};
+
+
 const covid19ImpactEstimator = (data) => {
   const { reportedCases } = data;
   return {
     data: reportedCases,
-    impact: { currentlyInfected: reportedCases * 10 },
-    severeImpact: { currentlyInfected: reportedCases * 50 }
+    impact: { estimateCurrentlyInfected },
+    severeImpact: { estimateProjectedInfections }
   };
 };
 
