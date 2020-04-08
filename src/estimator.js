@@ -12,11 +12,17 @@ const estimateProjectedInfections = (reportedCases) => {
 
 
 const covid19ImpactEstimator = (data) => {
-  const { reportedCases } = data;
+  const input = data;
   return {
-    data: reportedCases,
-    impact: { estimateCurrentlyInfected },
-    severeImpact: { estimateProjectedInfections }
+    data: input,
+    impact: {
+      currentlyInfected: estimateCurrentlyInfected.currentlyInfected,
+      infectionsByRequestedTime: estimateCurrentlyInfected.infectionsByRequestedTime
+    },
+    severeImpact: {
+      currentlyInfected: estimateProjectedInfections.currentlyInfected,
+      infectionsByRequestedTime: estimateProjectedInfections.infectionsByRequestedTime
+    }
   };
 };
 
