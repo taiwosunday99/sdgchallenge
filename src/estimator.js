@@ -4,15 +4,16 @@ const covid19ImpactEstimator = (data) => {
   const severeImpact = {};
   const beds = (0.35 * data.totalHospitalBeds);
   const population = data.region.avgDailyIncomePopulation;
-  // eslint-disable-next-line no-unused-vars
-  let days;
+  const days = data.timeToElapse;
+
   if (data.periodType === 'days') {
-    days = data.timeToElapse;
+    this.days = days;
   } else if (data.periodType === 'weeks') {
-    days = 7 * data.timeToElapse;
+    this.days = 7 * data.timeToElapse;
   } else if (data.periodType === 'months') {
-    days = 30 * data.timeToElapse;
+    this.days = 30 * data.timeToElapse;
   }
+
   const factor = Math.trunc(this.days / 3);
   impact.currentlyInfected = data.reportedCases * 10;
   severeImpact.currentlyInfected = data.reportedCases * 50;
