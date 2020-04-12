@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const covid19ImpactEstimator = (data) => {
   const impact = {};
   const severeImpact = {};
@@ -31,8 +32,7 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.casesForVentilatorsByRequestedTime = 0.02 * impact.infectionsByRequestedTime;
   const severeInfectionsByRequestedTime = severeImpact.infectionsByRequestedTime;
   impact.dollarsInFlight = Math.trunc(impact.infectionsByRequestedTime * population * 1.5 * days);
-  severeImpact.dollarsInFlight = Math.trunc(
-    severeInfectionsByRequestedTime * population * 1.5 * days);
+  severeImpact.dollarsInFlight = Math.trunc(severeInfectionsByRequestedTime * population * 1.5 * days);
 
   return {
     data,
