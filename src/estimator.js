@@ -4,6 +4,7 @@ const covid19ImpactEstimator = (data) => {
   const severeImpact = {};
   const beds = 0.35 * data.totalHospitalBeds;
   const population = data.region.avgDailyIncomePopulation;
+  const income = data.region.avgDailyIncomeInUSD;
   let days = data.timeToElapse;
   if (data.periodType === 'days') {
     days = data.timeToElapse;
@@ -30,8 +31,8 @@ const covid19ImpactEstimator = (data) => {
   impact.casesForVentilatorsByRequestedTime = Math.trunc(0.02 * impact.infectionsByRequestedTime);
   severeImpact.casesForVentilatorsByRequestedTime = Math.trunc(0.02 * severeImpact.infectionsByRequestedTime);
   const severeInfectionsByRequestedTime = severeImpact.infectionsByRequestedTime;
-  const impactDollars = (impact.infectionsByRequestedTime * population * 1.5) / days;
-  const severeDollars = (severeInfectionsByRequestedTime * population * 1.5) / days;
+  const impactDollars = (impact.infectionsByRequestedTime * population * income) / days;
+  const severeDollars = (severeInfectionsByRequestedTime * population * income) / days;
   impact.dollarsInFlight = Math.trunc(impactDollars);
   severeImpact.dollarsInFlight = Math.trunc(severeDollars);
 
