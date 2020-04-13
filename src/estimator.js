@@ -3,7 +3,7 @@ const covid19ImpactEstimator = (data) => {
   const impact = {};
   const severeImpact = {};
   const beds = 0.35 * data.totalHospitalBeds;
-  const population = 0.65;
+  const population = 0.73;
   let days = data.timeToElapse;
   if (data.periodType === 'days') {
     days = data.timeToElapse;
